@@ -16,9 +16,10 @@ class App < Sinatra::Base
     # @number = params[:number]
     # @phrase = params[:phrase]
     # count = 0
-    # until count = @number do 
-    #   count+=1
+    # while count <= @number do 
+      
     #   @phrase
+    #   count+=1
     # end
   end
   
@@ -30,6 +31,23 @@ class App < Sinatra::Base
   
   get '/:operation/:number1/:number2' do
     
+    @operation_word = params[:operation]
+    @operation = nil
+    case @operation_word
+      when "add"
+        @operation = +
+      when "subtract"
+        @operation = -
+      when "multiply"
+        @operation = *
+      when "divide"
+        @operation = /
+      else
+        @operation = nil
+    end
+    @num1 = params[:number1].to_i
+    @num2 = params[:number2].to_i
+    @result = @num1 @operation @num2
+    @result
   end
-  
 end
