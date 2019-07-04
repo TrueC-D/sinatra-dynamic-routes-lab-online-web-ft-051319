@@ -18,7 +18,7 @@ class App < Sinatra::Base
     count = 0
     while count <= @number do 
       count+=1
-      @phrase.to_s
+      puts @phrase.to_s
     end
   end
   
