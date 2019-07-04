@@ -13,14 +13,9 @@ class App < Sinatra::Base
   end
   
   get '/say/:number/:phrase' do
-    # @number = params[:number]
-    # @phrase = params[:phrase]
-    # count = 0
-    # while count <= @number do 
-      
-    #   @phrase
-    #   count+=1
-    # end
+    @number = params[:number].to_i
+    @phrase = params[:phrase].gsub("%20", " ")
+    "#{@phrase}"*@number
   end
   
   get '/say/:word1/:word2/:word3/:word4/:word5' do
@@ -30,24 +25,24 @@ class App < Sinatra::Base
   end
   
   get '/:operation/:number1/:number2' do
-    
-    @operation_word = params[:operation]
-    @operation = nil
-    case @operation_word
-      when "add"
-        @operation = +
-      when "subtract"
-        @operation = -
-      when "multiply"
-        @operation = *
-      when "divide"
-        @operation = /
-      else
-        @operation = nil
-    end
+    @operation = params[:operation]
     @num1 = params[:number1].to_i
     @num2 = params[:number2].to_i
-    @result = @num1 @operation @num2
-    @result
+    @operation_new = nil
+    case @operation
+    when "add"
+      @operation_new = "+"
+    when "subtract"
+      @operation_new = "-"
+    when "multiply" 
+      @operation_new = "*"
+    when "divide"
+      @operation_new = "/"
+    else
+      @operation_new = nil
+    end
+      
+    @result = @num1.send(@operation_new, @num2)
+    @result.to_s
   end
 end
