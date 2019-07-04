@@ -29,7 +29,7 @@ class App < Sinatra::Base
   #   @operation = params[:operation]
   #   @num1 = params[:number1].to_i
   #   @num2 = params[:number2].to_i
-  #   @result = @num1 @operation @num2
+  #   @result @num1.send(@operation, @num2)
   #   @result
   end
 end
