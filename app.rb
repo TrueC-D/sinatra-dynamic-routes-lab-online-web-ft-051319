@@ -16,10 +16,7 @@ class App < Sinatra::Base
     @number = params[:number].to_i
     @phrase = params[:phrase].gsub("%20", " ")
     count = 0
-    while count <= @number do 
-      count+=1
-      @phrase.to_s.tap
-    end
+    while count <= @number {count+=1 @phrase.to_s}
   end
   
   get '/say/:word1/:word2/:word3/:word4/:word5' do
