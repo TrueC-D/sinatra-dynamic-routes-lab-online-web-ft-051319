@@ -29,20 +29,20 @@ class App < Sinatra::Base
     @num1 = params[:number1].to_i
     @num2 = params[:number2].to_i
     @operation_new = nil
-    # case @operation
-    # when "add"
-    #   @operation_new = "+"
-    # when "subtract"
-    #   @operation_new = "-"
-    # when "multiply" 
-    #   @operation_new = "*"
-    # when "divide"
-    #   @operation_new = "/"
-    # else
-    #   @operation_new = nil
-    # end
+    case @operation
+    when "add"
+      @operation_new = "+"
+    when "subtract"
+      @operation_new = "-"
+    when "multiply" 
+      @operation_new = "*"
+    when "divide"
+      @operation_new = "/"
+    else
+      @operation_new = nil
+    end
       
-    @result = @num1.send(@operation, @num2)
+    @result = @num1.send(@operation_new, @num2)
     @result.to_s
   end
 end
