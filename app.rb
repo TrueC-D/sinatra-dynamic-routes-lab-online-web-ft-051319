@@ -49,5 +49,5 @@ class App < Sinatra::Base
   #   @num2 = params[:number2].to_i
   #   @result = @num1 @operation @num2
   #   @result
-  # end
+  end
 end
