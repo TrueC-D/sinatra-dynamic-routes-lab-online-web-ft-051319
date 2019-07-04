@@ -28,8 +28,21 @@ class App < Sinatra::Base
     @operation = params[:operation]
     @num1 = params[:number1]
     @num2 = params[:number2]
-    
-    @result = @num1.send(@operation, @num2)
+    @operation_new = nil
+    case @operation
+    when "add"
+      @operation_new = "+"
+    when "subtract"
+      @operation_new = "-"
+    when "multiply" 
+      @operation_new = "*"
+    when "divide"
+      @operation_new = "/"
+    else
+      @operation_new = nil
+    end
+      
+    @result = @num1.send(@operation_new, @num2)
     @result.to_s
   end
 end
